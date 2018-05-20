@@ -1,37 +1,32 @@
-#include <stdio.h>
-#include<stdlib.h>
+#include<stdio.h>
 #include<unistd.h>
 #include<sys/types.h>
 #include<sys/wait.h>
-
-void do_fork(char* arg[])
-{
-
-    pid_t pid = fork();
-    if(pid == -1) 
-    {   
-        perror("fork error");
-        exit(1);
- }
-    else if(pid == 0)//子进程
-    {   
-        int ret = execvp(arg[0],arg);//使子进程执行exec函数，arg[0]表示要执行的命令，arg表示以何种方式执行
-        if(ret == -1)
-        {   
-            printf("execv error\n");
-            exit(1);
-        }
-    }
-    else//父进程
-    {   
-        int st;
-        int ret1 = wait(&st);//父进程等待
-        if(ret1 == -1)
-        {   
-            printf("wait failed\n");
-            exit(1);
-        }
-    
-    }
+#include<stdlib.h>
+#include<ctype.h>
+char* arg[20] = {NULL};
+void do_parse(char* buf){
+  if (buf == NULL)
+    return;
+  if (isspace(*buf))
+    ++buf;
+  arg[1] = buf;
+  int i = 2;
+  while( *buf == '\n'){
+    if (isspace(*buf))
+      *buf = '\0';
+    arg[i++] = buf + 1;
+  } 
 }
-int main(int argc,)
+
+int main(){
+  char buf1[1024] = {'\0'};
+  char buf2[1024] = {'\0'};
+  scanf("%[^  ]",buf1);
+  scanf("%s",buf1);
+  do_parse(buf2);
+  for(int i=0;buf2[i]!='\n';++i){
+    printf("%c",buf2[i]);
+  }
+  return 0;
+}

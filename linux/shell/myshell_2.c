@@ -14,7 +14,7 @@ void do_parse(char* buf)
     for(count = i = 0;buf[i] != '\0';i++)
     {   
         if((!isspace(buf[i])) && (status == 0))//当遇到非空格且状态原状态为0，及表示有空格进入到非空个时
-        {
+       {
             arg[count++] = buf + i;//将字符串放入arg中
             status = 1;//此时状态变为非空格状态1
         }   
