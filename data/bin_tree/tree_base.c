@@ -1,6 +1,7 @@
- #include <stdio.h>
-#include <stdlib.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "stack_queue.h"
 typedef char TreeNodeType; 
 
 typedef struct TreeNode { 
@@ -45,7 +46,26 @@ void PostOrder(TreeNode* root){
   return;
 }
 
-void LevelOrder(TreeNode* root); 
+void LevelOrder(TreeNode* root){//层序遍历
+  if(root == NULL)
+    return;
+
+  //1.把根节点入队列
+  Queue bin_queue;
+  QueueInit(&bin_queue);
+  QueuePush(&bin_queue,(QueueType)(root->data) );
+  //2.取队首元素，然后把他们的左右节点入队列
+  QueueType top;
+  QueueTop(&bin_queue,&top);
+  printf("%c ",top);
+  while(1){
+    QueueTop(&bin_queue,&top);
+    printf("%c ",top);
+    QueuePush(&bin_queue,root->lchild->data);
+    QueuePush(&bin_queue,root->lchild->data);
+  }
+  
+} 
 
 /** 
 * @brief 根据先序遍历结果(带有空节点标记), 
@@ -58,9 +78,16 @@ void LevelOrder(TreeNode* root);
 * @return 
 */ 
 TreeNode* TreeCreate(TreeNodeType array[], 
-size_t size, TreeNodeType null_node); 
+    size_t size, TreeNodeType null_node){
+  //把数组中的每个元素添加到二叉树中
+  if(*array == NULL)
+    return NULL;
+      
+} 
 
-void TreeDestroy(TreeNode** root); 
+void TreeDestroy(TreeNode** root){
+  ;
+} 
 
 TreeNode* TreeClone(TreeNode* root); 
 
@@ -73,7 +100,9 @@ size_t TreeSize(TreeNode* root);
 * 
 * @return 
 */ 
-size_t TreeLeafSize(TreeNode* root); 
+size_t TreeLeafSize(TreeNode* root){
+
+} 
 
 /** 
 * @brief 求一棵树第 K 层节点的个数 
