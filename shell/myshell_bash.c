@@ -1,3 +1,4 @@
+#include<ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -16,8 +17,9 @@ void do_parse(char* buf){
     yes,no
   }is_head;//当遇到空格说明下一个是head
   is_head = yes;
+  count = 0;
   for(int i=0;buf[i]!='\0';++i){
-    if((!isspace(buf[i])) && is_head = yes){
+    if((!isspace(buf[i])) && is_head == yes){
       arg[count++] = buf + i;
       is_head = no;
     }else if (isspace(buf[i])){
@@ -57,7 +59,7 @@ int main(){
     fgets(buf,sizeof(buf),stdin);
     do_parse(buf);
     do_fork();
-    return 0;
+   
   }
   return 0;
 }
