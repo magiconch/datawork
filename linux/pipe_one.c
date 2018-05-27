@@ -19,7 +19,7 @@ int main(){
       printf("read error\n");
       break;
     }
-    if(write(1,buf,strlen(buf)) == -1){
+    if(write(STDOUT_FILENO,buf,strlen(buf)) == -1){
         printf("print error\n");
         break;
     }
