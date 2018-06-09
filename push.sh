@@ -7,4 +7,5 @@ git commit -m $mycommit
 echo 是否需要提交github"(y/n)"
 read stat
 
-[ 'X'$stat == 'X'"y" ] && git push origin master || sh fuck.sh
+[ 'X'$stat == 'X'"y" ] && git push origin master 
+#|| sh fuck.sh
