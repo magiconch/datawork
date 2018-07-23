@@ -12,11 +12,11 @@ class Trie{
 TEST(trie,insert){
   
   //std::cout<<"good job"<<std::endl;
-  TireInsert(trie_insert_Test);
+  //TireInsert();
   //如何检测插入成功？
 
 }
 
 TEST(trie,search){
-  TrieSearch()
+//  TrieSearch()
 }
